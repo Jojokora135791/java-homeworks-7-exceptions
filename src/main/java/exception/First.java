@@ -18,15 +18,20 @@ public class First {
         try {
             searchSomethingOutString();
         } catch (StringIndexOutOfBoundsException exp) {
-            System.out.println("Ошибка в индексе");
+            System.out.println(ANSI_RED + "Ошибка в индексе");
+        }
+        try {
+            playWithNullPointer();
+        }
+        catch (NullPointerException e) {
+            System.out.println(ANSI_RED + "ссылка на null");
         }
         try {
             accessToUnexistingElement();
-            playWithNullPointer();
-            System.out.println("Ура! Меня снова печают");
+            System.out.println(ANSI_RED + "Ура! Меня снова печают");
         }
-        catch (Exception exp) {
-            System.out.println(exp.getClass());
+        catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -45,7 +50,7 @@ public class First {
 
     public static void playWithNullPointer() {
         String importantData = null;
-        System.out.println("important is " + importantData);
+        System.out.println("important is " + importantData.trim());
     }
 
     public static void tryToCreateFunnyArray() {
