@@ -1,14 +1,34 @@
 package exception;
 
 public class First {
+    public static final String ANSI_RED = "\u001B[31m";
 
     public static void main(String[] args) {
-        divideByZero();
-        accessToUnexistingElement();
-        playWithNullPointer();
-        tryToCreateFunnyArray();
-        searchSomethingOutString();
-        System.out.println("Ура! Меня снова печают");
+
+        try {
+            divideByZero();
+        } catch (ArithmeticException exp) {
+            System.out.println(ANSI_RED + "Произошло деление на ноль");
+        }
+        try {
+            tryToCreateFunnyArray();
+        } catch (NegativeArraySizeException exp) {
+            System.out.println(ANSI_RED + "Предпринята попытка создания массива с отр числом");
+        }
+        try {
+            searchSomethingOutString();
+        } catch (StringIndexOutOfBoundsException exp) {
+            System.out.println("Ошибка в индексе");
+        }
+        try {
+            accessToUnexistingElement();
+            playWithNullPointer();
+            System.out.println("Ура! Меня снова печают");
+        }
+        catch (Exception exp) {
+            System.out.println(exp.getClass());
+        }
+
     }
 
 
